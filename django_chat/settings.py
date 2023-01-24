@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
+from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -17,6 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_chat.account',
+    'django_chat.core'
 ]
 
 MIDDLEWARE = [
@@ -86,7 +89,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (
-        BASE_DIR / 'staticfiles',
+    BASE_DIR / 'staticfiles',
 )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'account.AppUser'
+LOGIN_URL = reverse_lazy('login url')
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
