@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Room</title>
+    <script type="text/javascript" src="{% static 'scripts/roomPage.js' %}" defer></script>
+</head>
+<body>
+
+<textarea id="chat-log"></textarea>
+<input id="chat-message-input" type="text" size="100"><br>
+<input id="chat-message-submit" type="button" value="Send">
+{{ room_name|json_script:"room-name" }}
+
+</body>
+</html>
