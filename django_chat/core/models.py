@@ -5,7 +5,7 @@ UserModel = get_user_model()
 
 
 class ChatRoom(models.Model):
-    room_name = models.CharField(max_length=20, null=False, blank=False)
+    room_name = models.CharField(max_length=20, null=False, blank=False, unique=True)
 
 
 class Message(models.Model):
