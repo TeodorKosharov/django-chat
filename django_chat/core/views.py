@@ -1,19 +1,13 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django_chat.core.forms import AddChatRoomForm, EnterChatRoomForm
+from django_chat.core.models import ChatRoom
+from django_chat.core.utils import is_room_existing
 
 
 def home(request):
-    if request.method == 'GET':
-        enter_room_form = EnterChatRoomForm()
-    else:
-        enter_room_form = EnterChatRoomForm(request.POST)
-        if enter_room_form.is_valid():
-            enter_room_form.save()
-            return redirect('chat room', room_name=request.POST.get('room_name'))
-
     context = {
-        'enter_room_form': enter_room_form,
+        'enter_room_form': EnterChatRoomForm(),
         'add_room_form': AddChatRoomForm()
     }
 
@@ -28,5 +22,14 @@ def add_chat_room(request, room_name):
     return JsonResponse(f'Chat room with name {room_name} already exists.', safe=False)
 
 
+def enter_chat_room(request, room_name):
+    if not is_room_existing(room_name, ChatRoom):
+        return JsonResponse(f'Chat room with name {room_name} does not exists!', safe=False)
+    return JsonResponse('Entering.', safe=False)
+
+
 def chat_room(request, room_name):
+    if not is_room_existing(room_name, ChatRoom):
+        return HttpResponseNotFound('Room not found!')
+
     return render(request, 'chat-room.html', {'room_name': room_name})

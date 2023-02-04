@@ -19,7 +19,7 @@
 </form>
 
 <h2>Enter room</h2>
-<form method="POST" action="{% url 'home' %}">
+<form method="POST" action="{% url 'home' %}" onsubmit="handleEnterRoomForm('{{ csrf_token }}')">
     {{ enter_room_form }}
     {% csrf_token %}
     <button>Enter</button>
