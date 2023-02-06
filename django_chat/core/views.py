@@ -1,5 +1,5 @@
 from django.http import JsonResponse, HttpResponseNotFound
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django_chat.core.forms import AddChatRoomForm, EnterChatRoomForm
 from django_chat.core.models import ChatRoom
 from django_chat.core.utils import is_room_existing

@@ -1,29 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% block staticfiles %}
+    <script type="text/javascript" src="{% static 'scripts/handleRoomForms.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
+{% endblock %}
+
+{% block title %}
     <title>Home</title>
-    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
-    <script type="text/javascript" src="{% static 'scripts/handleAddRoomForm.js' %}"></script>
-</head>
-<body>
-<h1>Hello, world!</h1>
-<p>{{ request.user }}</p>
+{% endblock %}
 
-<form method="POST" action="{% url 'home' %}" onsubmit="handleAddRoomForm('{{ csrf_token }}')">
-    {{ add_room_form }}
-    {% csrf_token %}
-    <button>Add</button>
-</form>
 
-<h2>Enter room</h2>
-<form method="POST" action="{% url 'home' %}" onsubmit="handleEnterRoomForm('{{ csrf_token }}')">
-    {{ enter_room_form }}
-    {% csrf_token %}
-    <button>Enter</button>
-</form>
+{% block sidebar %}
+    <aside>
+        <div class="profile-box">
+            <p class="login-icon" title="Login"><i class="fa-solid fa-right-to-bracket"></i></p>
+            <p class="register-icon" title="Register"><i class="fa-solid fa-address-card"></i></p>
+        </div>
 
-</body>
-</html>
+        <div class="available-rooms-box">
+            <p class="available-rooms-title">Available rooms</p>
+
+        </div>
+    </aside>
+{% endblock %}
+
+{% block main %}
+    <div class="enter-room-box">
+        <h2>Enter chat room</h2>
+
+        <form method="POST" action="{% url 'home' %}" onsubmit="handleEnterRoomForm('{{ csrf_token }}')">
+            {{ enter_room_form }}
+            {% csrf_token %}
+            <button>Enter</button>
+        </form>
+
+    </div>
+
+    {#    <form method="POST" action="{% url 'home' %}" onsubmit="handleRoomForms('{{ csrf_token }}')">#}
+    {#        {{ add_room_form }}#}
+    {#        {% csrf_token %}#}
+    {#        <button>Add</button>#}
+    {#    </form>#}
+{% endblock %}

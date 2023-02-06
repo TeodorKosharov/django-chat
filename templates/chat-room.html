@@ -10,8 +10,10 @@
 <body>
 
 <textarea id="chat-log"></textarea>
+
+<h3>Type message:</h3>
 <input id="chat-message-input" type="text" size="100"><br>
-<input id="chat-message-submit" type="button" value="Send">
+<input id="chat-message-submit" type="button" value="Send" onclick="sendMessage('{{ request.user }}')">
 {{ room_name|json_script:"room-name" }}
 
 </body>

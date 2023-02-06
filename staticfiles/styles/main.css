@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Do Hyeon";
+    src: url("../fonts/DoHyeon-Regular.ttf") format("truetype");
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    overflow-x: hidden;
+}
+
+header {
+    width: 100vw;
+    height: 15vh;
+    text-align: center;
+    color: whitesmoke;
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 18px;
+    background-color: #007530;
+}
+
+header h1 {
+    font-size: 4.5vh;
+    margin: 0;
+    padding-top: 5vh;
+}
+
+main {
+    font-size: 16px;
+}
+
+footer {
+    height: 5vh;
+    width: 100vw;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: #002e10;
+    position: absolute;
+}

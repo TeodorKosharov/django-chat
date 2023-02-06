@@ -1,4 +1,4 @@
-async function handleAddRoomForm(token) {
+async function handleRoomForms(token) {
     event.preventDefault();
     const formData = new FormData(event.target);
     formData.append('csrfmiddlewaretoken', token);

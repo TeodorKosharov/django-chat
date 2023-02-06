@@ -10,11 +10,11 @@ chatSocket.onclose = function () {
     console.error('Chat socket closed unexpectedly');
 };
 
-document.querySelector('#chat-message-submit').onclick = function () {
+function sendMessage(user) {
     const messageInputDom = document.querySelector('#chat-message-input');
-    const message = messageInputDom.value;
+    const message = messageInputDom.value + `[${user}]`;
     chatSocket.send(JSON.stringify({
         'message': message
     }));
     messageInputDom.value = '';
-};
+}
