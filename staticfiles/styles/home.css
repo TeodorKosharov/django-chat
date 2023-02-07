@@ -5,8 +5,35 @@ main {
     position: absolute;
     width: 80vw;
     height: 80vh;
-    background-color: #ffffff;
     text-align: center;
+}
+
+main div {
+    position: relative;
+    width: 60vw;
+    height: 30vh;
+    border-radius: 1vh;
+    background-color: #b6e0c3;
+    display: grid;
+    gap: 2vmax;
+    grid-template-rows: repeat(3, 10vh);
+    grid-template-areas:
+            "title"
+            "form"
+            ".";
+}
+
+main div h2 {
+    grid-area: title;
+    font-size: 2vmax;
+    color: #006d2a;
+    font-family: "Do Hyeon", sans-serif;
+    padding-top: 2.5vmax;
+}
+
+main div form {
+    grid-area: form;
+    padding-top: 1.5vmax;
 }
 
 aside {
@@ -24,6 +51,21 @@ aside div {
 aside p {
     text-align: center;
     font-size: 1.5vw;
+}
+
+button {
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 1vmax;
+    color: white;
+    margin-left: 2vmin;
+    border-radius: 1vmin;
+    border: 3px outset #009951;
+    background-color: #006d2a;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 
 .profile-box {
@@ -58,9 +100,23 @@ aside p {
 }
 
 .enter-room-box {
-    position: relative;
     margin: 5vh 0 0 10vw;
-    outline: solid 1px red;
-    width: 60vw;
-    height: 30vh
+}
+
+.create-room-box {
+    margin: 10vh 0 0 10vw;
+}
+
+.room-form-input {
+    width: 20vmax;
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 1vmax;
+    text-align: center;
+    border: 3px outset #90d1a5;
+    border-radius: 1vmin;
+    background-color: #edf7f0;
+}
+
+.room-form-input:focus {
+    outline: none;
 }

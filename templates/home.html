@@ -27,19 +27,20 @@
 
 {% block main %}
     <div class="enter-room-box">
-        <h2>Enter chat room</h2>
-
+        <h2>Enter chat room <i class="fa-solid fa-door-open"></i></h2>
         <form method="POST" action="{% url 'home' %}" onsubmit="handleEnterRoomForm('{{ csrf_token }}')">
             {{ enter_room_form }}
             {% csrf_token %}
             <button>Enter</button>
         </form>
-
     </div>
 
-    {#    <form method="POST" action="{% url 'home' %}" onsubmit="handleRoomForms('{{ csrf_token }}')">#}
-    {#        {{ add_room_form }}#}
-    {#        {% csrf_token %}#}
-    {#        <button>Add</button>#}
-    {#    </form>#}
+    <div class="create-room-box">
+        <h2>Create chat room <i class="fa-solid fa-comment-dots"></i></h2>
+        <form method="POST" action="{% url 'home' %}" onsubmit="handleRoomForms('{{ csrf_token }}')">
+            {{ add_room_form }}
+            {% csrf_token %}
+            <button>Create</button>
+        </form>
+    </div>
 {% endblock %}
