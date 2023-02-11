@@ -1,5 +1,3 @@
-@import url("https://use.fontawesome.com/releases/v6.2.1/css/all.css");
-
 main {
     display: inline-block;
     position: absolute;
@@ -26,8 +24,6 @@ main div {
 main div h2 {
     grid-area: title;
     font-size: 2vmax;
-    color: #006d2a;
-    font-family: "Do Hyeon", sans-serif;
     padding-top: 2.5vmax;
 }
 
@@ -53,19 +49,12 @@ aside p {
     font-size: 1.5vw;
 }
 
-button {
-    font-family: "Do Hyeon", sans-serif;
-    font-size: 1vmax;
-    color: white;
-    margin-left: 2vmin;
-    border-radius: 1vmin;
-    border: 3px outset #009951;
-    background-color: #006d2a;
+i {
     transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.1);
+a, a:active, a:link {
+    color: white;
 }
 
 .profile-box {
@@ -84,8 +73,12 @@ button:hover {
     transition: 0.3s;
 }
 
-.profile-box p:hover {
+.profile-box a:hover {
     color: #6bfdba;
+}
+
+.profile-box i:hover {
+    transform: scale(1.09);
 }
 
 .available-rooms-box {
@@ -97,6 +90,7 @@ button:hover {
     font-family: "Do Hyeon", sans-serif;
     color: white;
     padding-top: 3vh;
+    cursor: default;
 }
 
 .enter-room-box {
@@ -109,14 +103,8 @@ button:hover {
 
 .room-form-input {
     width: 20vmax;
-    font-family: "Do Hyeon", sans-serif;
     font-size: 1vmax;
     text-align: center;
-    border: 3px outset #90d1a5;
     border-radius: 1vmin;
     background-color: #edf7f0;
-}
-
-.room-form-input:focus {
-    outline: none;
 }

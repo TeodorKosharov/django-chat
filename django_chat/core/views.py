@@ -8,7 +8,8 @@ from django_chat.core.utils import is_room_existing
 def home(request):
     context = {
         'enter_room_form': EnterChatRoomForm(),
-        'add_room_form': AddChatRoomForm()
+        'add_room_form': AddChatRoomForm(),
+        'user': None if str(request.user) == 'AnonymousUser' else request.user
     }
 
     return render(request, 'home.html', context)

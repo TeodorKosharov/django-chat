@@ -1,6 +1,6 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView
-from django_chat.account.forms import RegisterForm
+from django_chat.account.forms import RegisterForm, LoginForm
 
 
 class RegisterPage(CreateView):
@@ -11,6 +11,7 @@ class RegisterPage(CreateView):
 
 class LoginPage(LoginView):
     template_name = 'login-page.html'
+    form_class = LoginForm
 
 
 class LogoutPage(LogoutView):

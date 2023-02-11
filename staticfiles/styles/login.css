@@ -1,0 +1,35 @@
+h1 {
+    font-family: "Do Hyeon", sans-serif;
+    cursor: default;
+}
+
+main {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f2fff8;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form input {
+    font-family: "Do Hyeon", sans-serif;
+    height: 4vh;
+    width: 15vmax;
+    border-radius: 10px;
+    padding-left: 1vmax;
+}
+
+button {
+    display: block;
+    width: 30%;
+    margin: 0;
+}

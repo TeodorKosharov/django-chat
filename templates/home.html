@@ -10,12 +10,15 @@
     <title>Home</title>
 {% endblock %}
 
-
 {% block sidebar %}
     <aside>
         <div class="profile-box">
-            <p class="login-icon" title="Login"><i class="fa-solid fa-right-to-bracket"></i></p>
-            <p class="register-icon" title="Register"><i class="fa-solid fa-address-card"></i></p>
+            {% if not user %}
+                <p class="login-icon"><a href="{% url 'login url' %}"><i
+                        title="Login" class="fa-solid fa-right-to-bracket"></i></a></p>
+                <p class="register-icon"><a href="{% url 'register url' %}"><i
+                        title="Register" class="fa-solid fa-address-card"></i></a></p>
+            {% endif %}
         </div>
 
         <div class="available-rooms-box">

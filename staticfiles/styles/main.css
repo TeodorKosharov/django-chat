@@ -1,3 +1,5 @@
+@import url("https://use.fontawesome.com/releases/v6.2.1/css/all.css");
+
 @font-face {
     font-family: "Do Hyeon";
     src: url("../fonts/DoHyeon-Regular.ttf") format("truetype");
@@ -20,14 +22,43 @@ header {
     background-color: #007530;
 }
 
+header a:active, a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+
 header h1 {
     font-size: 4.5vh;
     margin: 0;
     padding-top: 5vh;
 }
 
+h1, h2 {
+    color: #006d2a;
+    font-family: "Do Hyeon", sans-serif;
+    cursor: default;
+}
+
 main {
     font-size: 16px;
+}
+
+button {
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 1vmax;
+    color: white;
+    margin-left: 2vmin;
+    border-radius: 1vmin;
+    border: 3px outset #009951;
+    background-color: #006d2a;
+    transition: 0.3s;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 
 footer {
@@ -39,4 +70,14 @@ footer {
     background-color: #002e10;
     position: absolute;
     font-family: "Do Hyeon", sans-serif;
+    cursor: default;
+}
+
+input {
+    font-family: "Do Hyeon", sans-serif;
+    border: 3px outset #90d1a5;
+}
+
+input:focus {
+    outline: none;
 }
