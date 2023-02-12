@@ -14,7 +14,7 @@
     <form method="POST" action="{% url 'login url' %}">
         {{ form.as_p }}
         {% csrf_token %}
-        <button><i class="fa-solid fa-right-to-bracket"></i></button>
+        <button title="Login"><i class="fa-solid fa-right-to-bracket"></i></button>
     </form>
 
 {% endblock %}

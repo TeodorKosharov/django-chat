@@ -29,7 +29,8 @@ form input {
 }
 
 button {
-    display: block;
     width: 30%;
     margin: 0;
+    padding-top: 0.5vh;
+    font-size: 1.4vmax;
 }

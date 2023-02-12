@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/register.css' %}">
+{% endblock %}
+
+{% block title %}
     <title>Register</title>
-</head>
-<body>
-<form method="POST" action="{% url 'register url' %}">
-    {{ form }}
-    {% csrf_token %}
-    <button>Register</button>
-</form>
-</body>
-</html>
+{% endblock %}
+
+{% block main %}
+    <h1>Register</h1>
+    <form method="POST" action="{% url 'register url' %}">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button title="Register"><i class="fa-solid fa-address-card"></i></button>
+    </form>
+{% endblock %}
