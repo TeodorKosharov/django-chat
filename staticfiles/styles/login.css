@@ -34,3 +34,18 @@ button {
     padding-top: 0.5vh;
     font-size: 1.4vmax;
 }
+
+ul {
+    display: none;
+}
+
+.error-paragraph {
+    font-family: "Do Hyeon", sans-serif;
+    color: #8f0000;
+}
+
+.fa-ban {
+    font-size: 1.2vmax;
+    padding-right: 0.5vmax;
+    font-weight: bold;
+}
