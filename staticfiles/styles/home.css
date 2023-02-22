@@ -108,3 +108,42 @@ a, a:active, a:link {
     border-radius: 1vmin;
     background-color: #edf7f0;
 }
+
+.available-rooms-inner-box {
+    margin: 0;
+    height: 40.5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vmax;
+    overflow: auto;
+}
+
+.available-rooms-inner-box::-webkit-scrollbar {
+    width: 12px;
+}
+
+.available-rooms-inner-box::-webkit-scrollbar-track {
+    border-radius: 20px;
+}
+
+.available-rooms-inner-box::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #408967;
+}
+
+.available-rooms-inner-box::-webkit-scrollbar-thumb:hover {
+    background-color: #76a98f;
+}
+
+.room-link {
+    display: block;
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 2vmax;
+    text-align: center;
+    border-radius: 1vmax;
+    transition: 0.2s;
+}
+
+.room-link:hover {
+    background-color: #408967;
+}

@@ -1,6 +1,10 @@
 const errors = document.querySelectorAll('li');
 const main = document.querySelector('main');
-document.querySelector('ul').style.display = 'none';
+const errorsList = document.querySelector('ul');
+
+if (errorsList) {
+    errorsList.style.display = 'none';
+}
 
 errors.forEach(err => {
     const errorParagraph = document.createElement('p');

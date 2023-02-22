@@ -1,4 +1,4 @@
-async function handleRoomForms(token) {
+async function handleCreateRoomForm(token) {
     event.preventDefault();
     const formData = new FormData(event.target);
     formData.append('csrfmiddlewaretoken', token);
@@ -7,8 +7,24 @@ async function handleRoomForms(token) {
         method: 'POST', body: formData
     });
 
-    const responseData = await response.json();
-    console.log(responseData);
+    const responseData = await processingResponse(response);
+
+    if (responseData === `Chat room with name ${roomName} added successfully!`) {
+        const availableRoomsBox = document.querySelector('.available-rooms-inner-box');
+        const addedRoomLink = document.createElement('a');
+        addedRoomLink.className = 'room-link';
+        addedRoomLink.href = `${roomName}/`;
+        addedRoomLink.textContent = roomName;
+        availableRoomsBox.append(addedRoomLink);
+        Swal.fire({
+            title: 'Success!', text: responseData, icon: 'success', buttonsStyling: false
+        });
+    } else if (responseData === `Chat room with name ${roomName} already exists.`) {
+        Swal.fire({
+            title: 'Fail!', text: responseData, icon: 'error', buttonsStyling: false
+        });
+    }
+
 }
 
 async function handleEnterRoomForm(token) {
@@ -21,12 +37,25 @@ async function handleEnterRoomForm(token) {
         }, body: JSON.stringify({'room_name': roomName})
     });
 
-    const responseData = await response.json();
+    const responseData = await processingResponse(response);
 
     if (responseData === 'Entering.') {
         window.location.href = `${roomName}/`;
-    } else {
-        console.log(responseData);
+    } else if (responseData === `Chat room with name ${roomName} does not exists!`) {
+        Swal.fire({
+            title: 'Room not found!', text: `${responseData}`, icon: 'question', buttonsStyling: false
+        });
     }
+}
 
+async function processingResponse(response) {
+    // If the response is not valid json, SyntaxError is raised. This is because
+    // of the login_required decorator - if the user is not logged in, then a json
+    // response is not returned. In this case we have to redirect to login url
+
+    try {
+        return await response.json();
+    } catch (SyntaxError) {
+        window.location.href = 'account/login/';
+    }
 }
