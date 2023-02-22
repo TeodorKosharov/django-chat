@@ -3,18 +3,23 @@ const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/' + roomN
 
 chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
-    document.querySelector('#chat-log').value += (data.message + '\n');
+    const chatLog = document.querySelector('.chat-log');
+    const newMessage = document.createElement('p');
+    newMessage.textContent = data.message;
+    chatLog.append(newMessage);
+
 };
 
 chatSocket.onclose = function () {
     console.error('Chat socket closed unexpectedly');
 };
 
-function sendMessage(user) {
-    const messageInputDom = document.querySelector('#chat-message-input');
-    const message = messageInputDom.value + `[${user}]`;
+async function sendMessage(sender, roomName) {
+    const messageInputDom = document.querySelector('.chat-message-input');
+    const message = messageInputDom.value;
     chatSocket.send(JSON.stringify({
         'message': message
     }));
     messageInputDom.value = '';
+    await fetch(`http://127.0.0.1:8000/send/${message}/${sender}/${roomName}/`);
 }

@@ -1,9 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse, HttpResponseNotFound
+from django.http import JsonResponse, HttpResponseNotFound, HttpResponse
 from django.shortcuts import render
 from django_chat.core.forms import AddChatRoomForm, EnterChatRoomForm
-from django_chat.core.models import ChatRoom
+from django_chat.core.models import ChatRoom, Message
 from django_chat.core.utils import is_room_existing
+
+UserModel = get_user_model()
 
 
 def home(request):
@@ -39,4 +42,19 @@ def chat_room(request, room_name):
     if not is_room_existing(room_name, ChatRoom):
         return HttpResponseNotFound('Room not found!')
 
-    return render(request, 'chat-room.html', {'room_name': room_name})
+    room_id = (ChatRoom.objects.get(room_name=room_name)).id
+
+    context = {
+        'room_name': room_name,
+        'messages': Message.objects.filter(room_name_id=room_id)
+    }
+
+    return render(request, 'chat-room.html', context)
+
+
+@login_required
+def add_message(request, message, sender_id, room_name):
+    sender = UserModel.objects.get(id=sender_id)
+    room = ChatRoom.objects.get(room_name=room_name)
+    Message.objects.create(message=message, sender=sender, room_name=room)
+    return HttpResponse()

@@ -1,20 +1,34 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Chat Room</title>
+
+{% block staticfiles %}
     <script type="text/javascript" src="{% static 'scripts/roomPage.js' %}" defer></script>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/chat-room.css' %}">
+{% endblock %}
 
-<textarea id="chat-log"></textarea>
+{% block title %}
+    <title>Chat</title>
+{% endblock %}
 
-<h3>Type message:</h3>
-<input id="chat-message-input" type="text" size="100"><br>
-<input id="chat-message-submit" type="button" value="Send" onclick="sendMessage('{{ request.user }}')">
-{{ room_name|json_script:"room-name" }}
+{% block main %}
+    <h1>{{ room_name }}</h1>
+    <div class="chat-container">
+        <div class="chat-log">
+            {% for message in messages %}
+                <div class="message-box">
+                    <div class="message-info-box">
+                        <p>{{ message.sender }}</p>
+                        <p>{{ message.date }}</p>
+                    </div>
+                    <p>{{ message.message }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <input class="chat-message-input" type="text" size="100" maxlength="300" placeholder="Type message"><br>
+        <button onclick="sendMessage('{{ request.user.id }}', '{{ room_name }}')"><i
+                class="fa-regular fa-paper-plane"></i></button>
+    </div>
 
-</body>
-</html>
+    {{ room_name|json_script:"room-name" }}
+{% endblock %}

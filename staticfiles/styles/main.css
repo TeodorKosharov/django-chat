@@ -40,6 +40,9 @@ h1, h2 {
 
 main {
     font-size: 16px;
+    width: 100vw;
+    height: 80vh;
+    background-color: #f2fff8;
 }
 
 button {
@@ -64,7 +67,7 @@ footer {
     height: 5vh;
     width: 100vw;
     text-align: center;
-    font-size: 16px;
+    font-size: 1vmax;
     color: white;
     background-color: #002e10;
     position: absolute;
