@@ -4,7 +4,7 @@ from django.http import JsonResponse, HttpResponseNotFound, HttpResponse
 from django.shortcuts import render
 from django_chat.core.forms import AddChatRoomForm, EnterChatRoomForm
 from django_chat.core.models import ChatRoom, Message
-from django_chat.core.utils import is_room_existing
+from django_chat.core.utils import is_room_existing, format_date
 
 UserModel = get_user_model()
 
@@ -58,3 +58,11 @@ def add_message(request, message, sender_id, room_name):
     room = ChatRoom.objects.get(room_name=room_name)
     Message.objects.create(message=message, sender=sender, room_name=room)
     return HttpResponse()
+
+
+@login_required
+def get_info(request):
+    sender = request.user
+    date = format_date(str(Message.objects.last().date).split(' '))
+    print(Message.objects.last().date)
+    return JsonResponse(f'{sender}|{date}', safe=False)

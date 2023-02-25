@@ -18,10 +18,10 @@
             {% for message in messages %}
                 <div class="message-box">
                     <div class="message-info-box">
-                        <p>{{ message.sender }}</p>
-                        <p>{{ message.date }}</p>
+                        <p class="message-sender"><i class="fa-solid fa-user"></i> {{ message.sender }}</p>
+                        <p class="message-date"><i class="fa-solid fa-calendar-days"></i> {{ message.date }}</p>
                     </div>
-                    <p>{{ message.message }}</p>
+                    <p class="message"><i class="fa-solid fa-message"></i> {{ message.message }}</p>
                 </div>
             {% endfor %}
         </div>

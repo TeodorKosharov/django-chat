@@ -5,10 +5,36 @@ main {
     align-items: center;
 }
 
+button {
+    border-radius: 1vmax;
+    padding: 0 1vw 0 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5vh;
+}
+
 .chat-log {
     height: 90%;
     width: 90%;
-    outline: 1px solid red;
+    overflow: auto;
+}
+
+.chat-log::-webkit-scrollbar {
+    width: 12px;
+}
+
+.chat-log::-webkit-scrollbar-track {
+    border-radius: 20px;
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #408967;
+}
+
+.chat-log::-webkit-scrollbar-thumb:hover {
+    background-color: #76a98f;
 }
 
 .chat-container {
@@ -26,12 +52,36 @@ main {
     margin-bottom: 1.5vh;
 }
 
-button {
-    border-radius: 1vmax;
-    padding: 0 1vw 0 1vw;
+.message-box {
+    background-color: #007530;
+    color: white;
+    font-family: "Do Hyeon", sans-serif;
+    border-radius: 10px;
+    margin-top: 2vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.5vh;
+    flex-wrap: wrap;
+}
+
+.message-info-box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+
+
+.message-sender, .message {
+    position: relative;
+    left: 2vw;
+}
+
+.message {
+    width: 90%;
+}
+
+
+.message-date {
+    position: relative;
+    right: 2vw;
+    justify-self: flex-end;
 }
 
