@@ -3,6 +3,7 @@ const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/' + roomN
 
 chatSocket.onmessage = async function (e) {
     const data = JSON.parse(e.data);
+
     const info = await (await fetch('http://127.0.0.1:8000/info/get')).json();
     const [sender, date] = info.split('|');
 
@@ -34,6 +35,7 @@ chatSocket.onclose = function () {
 async function sendMessage(senderId, roomName) {
     const messageInputDom = document.querySelector('.chat-message-input');
     const message = messageInputDom.value;
+    messageInputDom.value = 'Sending...'
     await fetch(`http://127.0.0.1:8000/send/${message}/${senderId}/${roomName}/`);
 
     chatSocket.send(JSON.stringify({

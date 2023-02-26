@@ -10,7 +10,6 @@ UserModel = get_user_model()
 
 
 def home(request):
-    print(ChatRoom.objects.all())
     context = {
         'enter_room_form': EnterChatRoomForm(),
         'add_room_form': AddChatRoomForm(),
@@ -62,7 +61,7 @@ def add_message(request, message, sender_id, room_name):
 
 @login_required
 def get_info(request):
-    sender = request.user
-    date = format_date(str(Message.objects.last().date).split(' '))
-    print(Message.objects.last().date)
+    last_message = Message.objects.last()
+    sender = UserModel.objects.filter(id=last_message.sender_id)[0]
+    date = format_date(str(last_message.date).split(' '))
     return JsonResponse(f'{sender}|{date}', safe=False)
