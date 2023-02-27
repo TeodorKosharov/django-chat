@@ -19,6 +19,12 @@
                 <div class="message-box">
                     <div class="message-info-box">
                         <p class="message-sender"><i class="fa-solid fa-user"></i> {{ message.sender }}</p>
+                        {% if message.sender_id == request.user.id %}
+                            <p class="action-btns">
+                                <i title="edit" class="fa-solid fa-pen-to-square"></i>
+                                <i title="delete" class="fa-solid fa-trash" onclick="deleteMessage(event, {{ message.id }})"></i>
+                            </p>
+                        {% endif %}
                         <p class="message-date"><i class="fa-solid fa-calendar-days"></i> {{ message.date }}</p>
                     </div>
                     <p class="message"><i class="fa-solid fa-message"></i> {{ message.message }}</p>

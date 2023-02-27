@@ -64,4 +64,9 @@ def get_info(request):
     last_message = Message.objects.last()
     sender = UserModel.objects.filter(id=last_message.sender_id)[0]
     date = format_date(str(last_message.date).split(' '))
-    return JsonResponse(f'{sender}|{date}', safe=False)
+    return JsonResponse(f'{sender}|{date}|{request.user}|{last_message.id}', safe=False)
+
+
+def delete_message(request, message_id):
+    Message.objects.filter(id=message_id)[0].delete()
+    return HttpResponse()

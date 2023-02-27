@@ -28,13 +28,19 @@ def format_date(date_elements):
         '20': '8',
         '21': '9',
         '22': '10',
-        '23': '11'
+        '23': '11',
+        '00': '12'
     }
     date = date_elements[0]
     time = date_elements[1].split('.')[0].split(':')
+    clock_format = 'a.m.'
+
+    if time[0] in time_to_pm:
+        time[0] = time_to_pm[time[0]]
+        clock_format = 'p.m.'
 
     date_elements = date.split('-')
     result = months[date_elements[1]] + '. ' + date_elements[2] + ', ' + date_elements[0] + ', ' + \
-             time_to_pm[time[0]] + f':{time[1]} p.m.'
+             time[0] + f':{time[1]} {clock_format}'
 
     return result
