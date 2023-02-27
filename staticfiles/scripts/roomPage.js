@@ -5,13 +5,12 @@ chatSocket.onmessage = async function (e) {
     const data = JSON.parse(e.data);
     const info = await (await fetch('http://127.0.0.1:8000/info/get')).json();
     const [sender, date, loggedUser, messageId] = info.split('|');
-    const isDeleted = data.delete_message === 'yes';
+    const action = data.action;
 
-    if (isDeleted) {
+    if (action === 'delete') {
         fetch(`http://127.0.0.1:8000/delete-message/${messageId}/`);
         const el = document.getElementById(`${data.message}`).parentElement;
         el.remove();
-
     } else {
         const message = data.message;
         const chatLog = document.querySelector('.chat-log');
@@ -24,9 +23,7 @@ chatSocket.onmessage = async function (e) {
 
         createElement('fa-solid fa-user', 'message-sender', sender, messageInfoBox);
 
-        if (sender === loggedUser) {
-            createActionButtons(messageInfoBox, messageId);
-        }
+        createDeleteBtn(messageInfoBox, messageId, loggedUser, sender);
 
         createElement('fa-solid fa-calendar-days', 'message-date', date, messageInfoBox);
 
@@ -49,7 +46,7 @@ async function sendMessage(senderId, roomName) {
     await fetch(`http://127.0.0.1:8000/send/${message}/${senderId}/${roomName}/`);
 
     chatSocket.send(JSON.stringify({
-        'message': message, 'delete_message': 'no',
+        'message': message, 'action': 'send',
     }));
     messageInputDom.value = '';
 }
@@ -64,32 +61,32 @@ function createElement(iconClass, paragraphClass, content, parentElement) {
     parentElement.append(p);
 }
 
-function createActionButtons(parentEl, messageId) {
+function createDeleteBtn(parentEl, messageId, loggedUser, sender) {
     const actionParagraph = document.createElement('p');
     actionParagraph.className = 'action-btns';
-
-    const editBtn = document.createElement('i');
-    editBtn.title = 'edit';
-    editBtn.classList.add('fa-solid', 'fa-pen-to-square');
 
     const deleteBtn = document.createElement('i');
     deleteBtn.title = 'delete';
     deleteBtn.classList.add('fa-solid', 'fa-trash');
 
-    actionParagraph.append(editBtn);
-    actionParagraph.append(deleteBtn);
-    parentEl.append(actionParagraph);
+    if (loggedUser === sender) {
+        actionParagraph.append(deleteBtn);
+        parentEl.append(actionParagraph);
+    }
+
     parentEl.id = messageId;
 
     deleteBtn.onclick = () => {
         chatSocket.send(JSON.stringify({
-            'message': `${messageId}`, 'delete_message': 'yes',
+            'message': `${messageId}`, 'action': 'delete',
         }));
     }
-
 }
 
-function deleteMessage(event, messageId) {
-    fetch(`http://127.0.0.1:8000/delete-message/${messageId}/`);
-    event.target.parentElement.parentElement.parentElement.remove();
+function deleteMessage(messageId) {
+    // This function is attached to the delete button while rendering the template
+
+    chatSocket.send(JSON.stringify({
+        'message': `${messageId}`, 'action': 'delete',
+    }));
 }
