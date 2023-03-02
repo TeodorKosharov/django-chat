@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/settings.css' %}">
+    <script type="text/javascript" src="{% static 'scripts/settingsPageFunctions.js' %}" defer></script>
+{% endblock %}
+
+{% block title %}
+    <title>Settings</title>
+{% endblock %}
+
+{% block main %}
+    <h1>Settings <i class="fa-solid fa-gear"></i></h1>
+
+    <h2>My rooms</h2>
+    <div class="outer-rooms-box">
+        <div class="user-rooms-box">
+            {% if user_rooms %}
+                {% for room in user_rooms %}
+                    <div class="room-box">
+                        <i title="Delete" class="fa-solid fa-trash"
+                           onclick="deleteRoom(event, '{{ room.room_name }}')"></i>
+                        <p title="Enter" onclick="enterRoom('{{ room.room_name }}')">{{ room.room_name }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2 class="no-rooms">No rooms!</h2>
+            {% endif %}
+        </div>
+    </div>
+
+    <h2>Theme</h2>
+    <div class="themes">
+        <div class="green-theme selected-color"></div>
+        <div class="blue-theme"></div>
+        <div class="red-theme"></div>
+        <div class="black-theme"></div>
+    </div>
+
+{% endblock %}

@@ -19,7 +19,7 @@
                 <p class="register-icon"><a href="{% url 'register url' %}"><i
                         title="Register" class="fa-solid fa-address-card"></i></a></p>
             {% else %}
-                <p class="settings-icon"><a href="#"><i title="Settings" class="fa-solid fa-gear"></i></a></p>
+                <p class="settings-icon"><a href="{% url 'settings url' %}"><i title="Settings" class="fa-solid fa-gear"></i></a></p>
                 <p class="logout-icon"><a href="{% url 'logout url' %}"><i
                         title="Logout" class="fa-solid fa-right-from-bracket"></i></a></p>
             {% endif %}
@@ -48,7 +48,7 @@
 
     <div class="create-room-box">
         <h2>Create chat room <i class="fa-solid fa-comment-dots"></i></h2>
-        <form method="POST" action="{% url 'home' %}" onsubmit="handleCreateRoomForm('{{ csrf_token }}')">
+        <form method="POST" action="{% url 'home' %}" onsubmit="handleCreateRoomForm(event, '{{ csrf_token }}')">
             {{ add_room_form }}
             {% csrf_token %}
             <button>Create</button>

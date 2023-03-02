@@ -1,0 +1,121 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    padding: 5vh 0 5vh 0;
+}
+
+.outer-rooms-box {
+    width: 50vw;
+    background-color: #b6e0c3;
+    display: flex;
+    justify-content: center;
+    border-radius: 1vh;
+    margin-bottom: 10vh;
+}
+
+.user-rooms-box {
+    height: 20vh;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    overflow: auto;
+}
+
+.user-rooms-box::-webkit-scrollbar {
+    height: 12px;
+}
+
+.user-rooms-box::-webkit-scrollbar-track {
+    border-radius: 20px;
+}
+
+.user-rooms-box::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #408967;
+}
+
+.user-rooms-box::-webkit-scrollbar-thumb:hover {
+    background-color: #76a98f;
+}
+
+.room-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 12vh;
+    background-color: rgba(0, 93, 59, 0.69);
+    border-radius: 1.5vmax;
+    font-family: "Do Hyeon", sans-serif;
+    flex-shrink: 0;
+}
+
+.room-box * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: white;
+    height: 40%;
+    font-size: 1.5vmax;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.room-box *:hover {
+    color: rgba(255, 255, 255, 0.41);
+}
+
+.no-rooms {
+    width: 100%;
+    text-align: center;
+}
+
+.themes {
+    width: 20vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2vw;
+}
+
+.themes * {
+    width: 15%;
+    height: 50%;
+    border-radius: 1vmax;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.themes *:hover {
+    opacity: 70%;
+}
+
+.green-theme {
+    background-color: #006d2a;
+}
+
+.blue-theme {
+    background-color: #0074B3FF;
+}
+
+.red-theme {
+    background-color: #8F0700FF;
+}
+
+.black-theme {
+    background-color: #000000FF;
+}
+
+.selected-color {
+    width: 20%;
+    height: 60%;
+}

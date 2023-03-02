@@ -24,7 +24,7 @@ def home(request):
 def add_chat_room(request, room_name):
     add_room_form = AddChatRoomForm(request.POST)
     if add_room_form.is_valid():
-        add_room_form.save()
+        ChatRoom.objects.create(room_name=add_room_form.cleaned_data['room_name'], creator=request.user)
         return JsonResponse(f'Chat room with name {room_name} added successfully!', safe=False)
     return JsonResponse(f'Chat room with name {room_name} already exists.', safe=False)
 

@@ -1,4 +1,4 @@
-async function handleCreateRoomForm(token) {
+async function handleCreateRoomForm(event, token) {
     event.preventDefault();
     const formData = new FormData(event.target);
     formData.append('csrfmiddlewaretoken', token);
@@ -6,7 +6,7 @@ async function handleCreateRoomForm(token) {
     const response = await fetch(`http://127.0.0.1:8000/add-room/${roomName}/`, {
         method: 'POST', body: formData
     });
-
+    event.target.reset();
     const responseData = await processingResponse(response);
 
     if (responseData === `Chat room with name ${roomName} added successfully!`) {
@@ -24,7 +24,6 @@ async function handleCreateRoomForm(token) {
             title: 'Fail!', text: responseData, icon: 'error', buttonsStyling: false
         });
     }
-
 }
 
 async function handleEnterRoomForm(token) {

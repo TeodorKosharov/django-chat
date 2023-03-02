@@ -5,7 +5,7 @@ from django_chat.core.models import ChatRoom
 class AddChatRoomForm(forms.ModelForm):
     class Meta:
         model = ChatRoom
-        fields = '__all__'
+        fields = ('room_name',)
         labels = {
             'room_name': ''
         }
@@ -13,14 +13,14 @@ class AddChatRoomForm(forms.ModelForm):
             'room_name': forms.TextInput(attrs={
                 'placeholder': 'Create chat room',
                 'class': 'room-form-input'
-            })
+            }),
         }
 
 
 class EnterChatRoomForm(forms.ModelForm):
     class Meta:
         model = ChatRoom
-        fields = '__all__'
+        fields = ('room_name',)
         labels = {
             'room_name': ''
         }

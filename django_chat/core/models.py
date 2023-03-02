@@ -6,6 +6,7 @@ UserModel = get_user_model()
 
 class ChatRoom(models.Model):
     room_name = models.CharField(max_length=10, null=False, blank=False, unique=True)
+    creator = models.ForeignKey(UserModel, on_delete=models.CASCADE, unique=False)
 
 
 class Message(models.Model):

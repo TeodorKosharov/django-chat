@@ -9,5 +9,5 @@ urlpatterns = (
     path('enter-room/<str:room_name>/', enter_chat_room, name='enter chat room'),
     path('send/<str:message>/<str:sender_id>/<str:room_name>/', add_message, name='add message'),
     path('info/get', get_info, name='get info'),
-    path('delete-message/<int:message_id>/', delete_message, name='delete message')
+    path('delete-message/<int:message_id>/', delete_message, name='delete message'),
 )
