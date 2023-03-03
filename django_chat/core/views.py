@@ -14,7 +14,8 @@ def home(request):
         'enter_room_form': EnterChatRoomForm(),
         'add_room_form': AddChatRoomForm(),
         'user': None if str(request.user) == 'AnonymousUser' else request.user,
-        'rooms': ChatRoom.objects.all()
+        'rooms': ChatRoom.objects.all(),
+        'theme': request.session.get('theme')
     }
 
     return render(request, 'home.html', context)
@@ -45,7 +46,8 @@ def chat_room(request, room_name):
 
     context = {
         'room_name': room_name,
-        'messages': Message.objects.filter(room_name_id=room_id)
+        'messages': Message.objects.filter(room_name_id=room_id),
+        'theme': request.session.get('theme')
     }
 
     return render(request, 'chat-room.html', context)

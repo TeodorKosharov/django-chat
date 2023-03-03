@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if theme == 'blue' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/blue-theme.css' %}">
+    {% elif theme == 'pink' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/pink-theme.css' %}">
+    {% elif theme == 'black' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/black-theme.css' %}">
+    {% endif %}
+
     {% block staticfiles %}
     {% endblock %}
     {% block title %}

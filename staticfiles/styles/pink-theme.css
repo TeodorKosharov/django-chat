@@ -1,0 +1,66 @@
+header {
+    background-color: #7A0070AD;
+}
+
+main {
+    background-color: #FFF2FBFF;
+}
+
+h1, h2 {
+    color: #6D0062FF;
+}
+
+button {
+    background-color: #6D0069FF;
+    border-color: #BE00C2FF;
+}
+
+footer {
+    background-color: #2E0024FF;
+}
+
+input {
+    border-color: #D190BFFF;
+}
+
+/* Home page elements */
+
+.profile-box {
+    background-color: #89407DFF !important;
+}
+
+.profile-box a:hover {
+    color: #FD6BDDFF !important;
+}
+
+.available-rooms-box {
+    background-color: #5D0049FF !important;
+}
+
+.enter-room-box, .create-room-box {
+    background-color: #E0B1D6FF;
+}
+
+.room-link:hover {
+    background-color: #894075FF !important;
+}
+
+/* Chat room elements */
+
+.chat-container {
+    background-color: #E0B1D8FF !important;
+}
+
+.message-box {
+    background-color: #750062AD !important;
+}
+
+/* Settings page elements */
+
+.outer-rooms-box {
+    background-color: #E0B1D6FF !important;
+}
+
+.room-box {
+    background-color: #750062AD !important;
+}

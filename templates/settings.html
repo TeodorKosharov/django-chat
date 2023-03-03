@@ -32,10 +32,14 @@
 
     <h2>Theme</h2>
     <div class="themes">
-        <div class="green-theme selected-color"></div>
-        <div class="blue-theme"></div>
-        <div class="red-theme"></div>
-        <div class="black-theme"></div>
+        <a class="green-theme {% if theme == 'green' or theme is None %}selected-color{% endif %}"
+           href="{% url 'select theme' color='green' %}"></a>
+        <a class="blue-theme {% if theme == 'blue' %}selected-color{% endif %}"
+           href="{% url 'select theme' color='blue' %}"></a>
+        <a class="pink-theme {% if theme == 'pink' %}selected-color{% endif %}"
+           href="{% url 'select theme' color='pink' %}"></a>
+        <a class="black-theme {% if theme == 'black' %}selected-color{% endif %}"
+           href="{% url 'select theme' color='black' %}"></a>
     </div>
 
 {% endblock %}
