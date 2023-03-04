@@ -55,16 +55,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_chat.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+if config('APP_ENVIRONMENT') == 'production':
+    DATABASES = {
+        'default': {
+            'ENGINE': config('DB_ENGINE'),
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': config('DB_PORT'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': config('DEV_ENGINE'),
+            'NAME': BASE_DIR / config('DEV_NAME'),
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
