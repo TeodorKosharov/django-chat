@@ -2,7 +2,7 @@ header {
     background-color: #000000D8;
 }
 
-main {
+body {
     background-color: #736D7114;
 }
 
@@ -53,6 +53,23 @@ input {
 
 .message-box {
     background-color: #000000B2 !important;
+}
+
+.chat-log::-webkit-scrollbar {
+    width: 12px;
+}
+
+.chat-log::-webkit-scrollbar-track {
+    border-radius: 20px;
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.37);
+}
+
+.chat-log::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.51);
 }
 
 /* Settings page elements */

@@ -14,10 +14,13 @@
         <link rel="stylesheet" type="text/css" href="{% static 'styles/pink-theme.css' %}">
     {% elif theme == 'black' %}
         <link rel="stylesheet" type="text/css" href="{% static 'styles/black-theme.css' %}">
+    {% else %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/green-theme.css' %}">
     {% endif %}
 
     {% block staticfiles %}
     {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/mobile-styles.css' %}">
     {% block title %}
 
     {% endblock %}

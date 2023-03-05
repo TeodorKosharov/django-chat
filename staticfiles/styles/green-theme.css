@@ -1,0 +1,19 @@
+/* Overriding of scrollbar styles is not working,
+this is why new file is used for green scrollbar styling */
+
+.chat-log::-webkit-scrollbar {
+    width: 12px;
+}
+
+.chat-log::-webkit-scrollbar-track {
+    border-radius: 20px;
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #408967;
+}
+
+.chat-log::-webkit-scrollbar-thumb:hover {
+    background-color: #76a98f;
+}

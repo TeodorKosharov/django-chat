@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block main %}
-    <h1>{{ room_name }}</h1>
+    <h1 class="room-name-title">{{ room_name }}</h1>
     <div class="chat-container">
         <div class="chat-log">
             {% for message in messages %}
@@ -21,7 +21,8 @@
                         <p class="message-sender"><i class="fa-solid fa-user"></i> {{ message.sender }}</p>
                         {% if message.sender_id == request.user.id %}
                             <p class="action-btns">
-                                <i title="delete" class="fa-solid fa-trash" onclick="deleteMessage({{ message.id }})"></i>
+                                <i title="delete" class="fa-solid fa-trash"
+                                   onclick="deleteMessage({{ message.id }})"></i>
                             </p>
                         {% endif %}
                         <p class="message-date"><i class="fa-solid fa-calendar-days"></i> {{ message.date }}</p>
@@ -30,9 +31,11 @@
                 </div>
             {% endfor %}
         </div>
-        <input class="chat-message-input" type="text" size="100" maxlength="300" placeholder="Type message"><br>
-        <button onclick="sendMessage('{{ request.user.id }}', '{{ room_name }}')"><i
-                class="fa-regular fa-paper-plane"></i></button>
+        <div class="chat-actions-container">
+            <input class="chat-message-input" type="text" size="100" maxlength="300" placeholder="Type message"><br>
+            <button onclick="sendMessage('{{ request.user.id }}', '{{ room_name }}')"><i
+                    class="fa-regular fa-paper-plane"></i></button>
+        </div>
     </div>
 
     {{ room_name|json_script:"room-name" }}

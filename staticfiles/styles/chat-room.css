@@ -20,23 +20,6 @@ button {
     overflow: auto;
 }
 
-.chat-log::-webkit-scrollbar {
-    width: 12px;
-}
-
-.chat-log::-webkit-scrollbar-track {
-    border-radius: 20px;
-}
-
-.chat-log::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    background-color: #408967;
-}
-
-.chat-log::-webkit-scrollbar-thumb:hover {
-    background-color: #76a98f;
-}
-
 .chat-container {
     background-color: #b6e0c3;
     width: 80vw;
@@ -50,6 +33,7 @@ button {
 .chat-message-input {
     border-radius: 1vmax;
     margin-bottom: 1.5vh;
+    width: 80%;
 }
 
 .message-box {
@@ -110,4 +94,9 @@ button {
     position: relative;
     right: 2vw;
     justify-self: flex-end;
+}
+
+.chat-actions-container {
+    display: flex;
+    justify-content: center;
 }

@@ -147,3 +147,10 @@ a, a:active, a:link {
 .room-link:hover {
     background-color: #408967;
 }
+
+@media (max-width: 450px) {
+    main {
+        height: auto;
+    }
+
+}

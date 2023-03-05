@@ -1,0 +1,210 @@
+@media (max-width: 450px) {
+
+    /* Home page */
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    body > * {
+        position: relative;
+        width: 100vw;
+    }
+
+    aside {
+        width: 100vw;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    aside > div {
+        margin: 6vh 0 0 0;
+        width: 50%;
+    }
+
+    .profile-box {
+        height: 10vh;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .profile-box > p {
+        margin: 0;
+        font-size: 6vmin;
+    }
+
+    .available-rooms-box {
+        height: 30vh;
+    }
+
+    .available-rooms-title {
+        font-size: 5vw;
+        padding-top: 0;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main > div:not(.themes) {
+        height: 20vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .enter-room-box *, .create-room-box * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .enter-room-box, .create-room-box {
+        margin: 6vh 0 0 0;
+    }
+
+    .create-room-box {
+        margin-bottom: 6vh;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 2vmax;
+    }
+
+    /* Settings page */
+    .outer-rooms-box {
+        margin: 0 !important;
+        width: 65vw;
+        height: 20vh
+    }
+
+    .themes {
+        margin: 0;
+        width: 50%;
+    }
+
+    .themes a {
+        width: 10vw;
+    }
+
+    .themes .selected-color {
+        height: 60%;
+        width: 13vw;
+    }
+
+    /* Chat room page */
+    .room-name-title {
+        height: 10%;
+    }
+
+    .chat-container {
+        height: 70% !important;
+    }
+
+    .chat-log {
+        width: 90%;
+        height: 80%;
+    }
+
+    .chat-actions-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .chat-message-input {
+        width: 50%;
+    }
+
+    button:not(.auth-btn, .enter-room-btn, .create-room-btn) {
+        width: 10%;
+    }
+
+    .message-info-box {
+        grid-template-columns: 35% 15% 50%;
+    }
+
+    .message-sender, .message-date {
+        font-size: 14px;
+    }
+
+    .action-btns {
+        justify-self: flex-start;
+    }
+
+    .message-date {
+        text-align: center;
+    }
+
+    /* Login/Register page */
+    .error-paragraph {
+        text-align: center;
+    }
+}
+
+@media (max-width: 950px) and (min-width: 450px){
+
+    main {
+        height: 95vh;
+    }
+
+    /* Settings page */
+
+    .outer-rooms-box {
+        margin-bottom: 0;
+    }
+
+    .theme-title {
+        margin-bottom: 0;
+    }
+
+    .themes {
+        height: 15vh;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 1.5vmax;
+    }
+
+    /* Chat room page */
+
+    .room-name-title {
+        margin: 0;
+    }
+
+    .chat-log {
+        height: 85%;
+    }
+
+    .message-sender, .message-date, .message{
+        font-size: 14px;
+    }
+
+    .chat-container {
+        height: 60vh;
+    }
+
+    .chat-message-input {
+        width: 50%;
+    }
+
+
+}

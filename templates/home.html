@@ -42,7 +42,7 @@
         <form method="POST" action="{% url 'home' %}" onsubmit="handleEnterRoomForm('{{ csrf_token }}')">
             {{ enter_room_form }}
             {% csrf_token %}
-            <button>Enter</button>
+            <button class="enter-room-btn">Enter</button>
         </form>
     </div>
 
@@ -51,7 +51,7 @@
         <form method="POST" action="{% url 'home' %}" onsubmit="handleCreateRoomForm(event, '{{ csrf_token }}')">
             {{ add_room_form }}
             {% csrf_token %}
-            <button>Create</button>
+            <button class="create-room-btn">Create</button>
         </form>
     </div>
 {% endblock %}
